@@ -5,6 +5,9 @@ from util import json_response, only_column_names
 import mimetypes
 from query import users_queries, board_queries, card_queries, columns_queries
 
+
+
+
 mimetypes.add_type('application/javascript', '.js')
 app = Flask(__name__)
 load_dotenv()
