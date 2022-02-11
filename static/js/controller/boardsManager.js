@@ -23,8 +23,6 @@ export let boardsManager = {
             domManager.addEventListener(
                 `.toggle-board-button[data-board-id="${board.id}"]`,
                 "click", showHideButtonHandler);
-            // domManager.addEventListener(`.content-button[data-board-id="${board.id}"]`,
-            //     'click', renameBoard);
             domManager.addEventListener(`.content-button[data-board-id="${board.id}"]`,
                 'click', renameBoard);
             domManager.addChild(`.board[data-board-id="${board.id}"]`, deleteBoard(board.id));
@@ -66,8 +64,6 @@ const addRefreshBtn = function (boardId) {
 function hideBoard(e) {
     const boardId = e.target.dataset.boardId;
     document.getElementById(`board${boardId}`).classList.remove('display');
-    // document.querySelector('.overlay').classList.add('hidden')
-    // e.target.classList.remove('hide_button')
     removeColumns();
     document.querySelector('.add_card_button').remove();
     document.querySelector('.create-new-column').remove();
@@ -175,5 +171,4 @@ async function deleteTheBoard(boardId) {
     if (await response.json() === 'deleted') {
         location.reload();
     }
-    console.log('usuwanie');
 }

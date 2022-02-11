@@ -17,7 +17,7 @@ const createSortedCardList = function (columns, cards){
     for (const column of columns) {
         let temporaryList = cards.filter(card => card.columns_id === column.id);
         cardsList.push(temporaryList.sort(SortCards));
-    }console.log(cardsList)
+    }
     return cardsList
 }
 
@@ -25,11 +25,6 @@ export function create_card(card) {
     const cardBuilder = htmlFactory(htmlTemplates.card);
     const content = cardBuilder(card);
     domManager.addChild(`.board-column[data-column-id="${card.columns_id}"]`, content, 'afterend');
-    domManager.addEventListener(
-        `.card[data-card-id="${card.id}"]`,
-        "click",
-        deleteButtonHandler
-    );
     domManager.addChild(`.card[data-card-id="${card.id}"]`, loadEditButtonForCard(card.id));
     document.getElementById('edit_title_for_card' + card.id).addEventListener('click', () => editCardTitle(card));
     domManager.addChild(`.card[data-card-id="${card.id}"]`, loadDeleteButtonForCard(card.id));
@@ -39,7 +34,6 @@ export function create_card(card) {
 }
 
 const injectCardsToHTML = function (columns, cardsList) {
-    console.debug(cardsList);
     for (let cards of cardsList) {
         for (let card of cards) {
             create_card(card);
@@ -49,9 +43,6 @@ const injectCardsToHTML = function (columns, cardsList) {
 
 function SortCards(card1, card2) {
     return card1.card_order < card2.card_order ? 1 : -1;
-}
-
-function deleteButtonHandler(clickEvent) {
 }
 
 async function editCardTitle(card) {

@@ -63,6 +63,7 @@ section.board{
     display: inline-block;
     font-size: 20px;
 }
+
 .board-title, .board-add, .board-toggle{
     display: inline-block;
 
@@ -76,13 +77,11 @@ section.board{
 .board-columns{
     display: table;
     flex-wrap: nowrap;
-
 }
 
 .board-column{
     padding: 10px;
     flex: 1;
-
 }
 
 .board-column-content{
@@ -90,12 +89,10 @@ section.board{
 }
 
 .board-column-content:empty{
-    /*This only works if the tag is really empty and there is not even whitespace inside*/
     border: 4px solid #cdcdcd;
     margin-top: 4px;
     border-radius: 10px;
     background: #eee;
-
 }
 
 .board-column-title{
@@ -109,8 +106,6 @@ section.board{
     border-radius: var(--border-radius);
     margin: 4px 0;
     padding: 4px;
-
-
 }
 
 .board-column:nth-of-type(1) .card{
@@ -143,9 +138,8 @@ section.board{
 }
 
 .display {
-    /*display: grid;*/
+    position: relative;
     display: table;
-    /*min-height: 500px;*/
     grid-template-rows: 5vh 60vh;
     gap:20px;
     background: #c4e3f3;
@@ -154,41 +148,41 @@ section.board{
     border-style: dashed;
     align-items: start;
     z-index: 10;
-
 }
+
 .board-columns-container {
     display: table;
 }
+
 .board {
     display: flex;
 }
+
 .card {
     align-self: center;
 }
+
 .board-header {
     text-align: center;
     display: flex;
     justify-self: center;
     background-color: #c4e3f3;
 }
+
 .empty{
     transition: height 0.2s;
     display: table;
     width: 200px;
     height: 5px;
     top: 5px;
-    /*background-color: #e30f0f;*/
-    /*top: 5px;*/
-    /*border: 1px solid #000000;*/
-
 }
+
 .empty--active{
     height:50px;
     background-color: #0fb2e3;
     border-radius: 4px;
     border: 1px solid #000000;
 }
-
 
 .card_button{
     text-align: right;
@@ -201,15 +195,14 @@ section.board{
   left: 50%;
   transform: translate(-50%, -50%);
   width: 25%;
-
   background-color: #d3cfcf;
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 2vh
+  display: flex;
+  flex-direction: column;
+  gap: 2vh
 
 }
 .close-modal-window{
@@ -233,21 +226,24 @@ section.board{
   backdrop-filter: blur(3px);
   z-index: 5;
 }
+
 .new-board-form {
     display: flex;
     flex-direction: column;
     gap:1vh;
     margin-left: 5vh;
 }
+
 .new-board-title {
     width: 30vh;
 }
+
 .new-column-input {
-    /*display: flex;*/
     flex-direction: column;
     gap:0.5vh;
     border-radius: 4px;
 }
+
 .submit-new-board {
     width: 10vh;
     height: 3vh;
@@ -264,9 +260,11 @@ section.board{
     top: 0.2rem;
     left: 8rem;
 }
+
 .public-board-expl {
     margin-left: 6px;
 }
+
 .hidden {
     display: none;
 }
@@ -283,9 +281,6 @@ section.board{
     font-size: 2rem;
     font-weight: bold;
     padding: 20px;
-}
-.display {
-    position: relative;
 }
 
 .refresh-button {

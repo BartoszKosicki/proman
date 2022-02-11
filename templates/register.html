@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <!-- Skrypty dla modalu -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <script type="text/javascript" src="../static/js/bootstrap/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/js/bootstrap/bootstrap.min.js"></script>
-    <!-- Koniec skryptów dla modalu -->
-    <link href="../static/css/log.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="log">
-    <div class="title_div">
-        <h1 class="title">Register</h1>
-    </div>
-    <div>
-        {{message}}
-    </div>
-    <form class="flex" action="/register" method="post">
-        <p>
-            Username:
-            <input type="text" class="data" name="name" required>
-        </p>
-        <p>
-            Email:
-            <input type="text" class="data" name="email" required>
-        </p>
-        <p>
-            Password:
-            <input type="password" class="data" name="password" required>
-        </p>
-        <button type="submit" class="data btn btn-outline-success">Register</button>
-    </form>
-    <div class="log_second_option">
-        <h5>If you are registered, use button below.</h5>
-        <button class="btn btn-outline-success" onclick="location.href='/login'">Login</button>
-    </div>
-    <div class="go_to_main_page">
-        <h5>If you want to see public boards, use button below.</h5>
-        <button class="btn btn-outline-success" onclick="location.href='/'">Boards</button>
-    </div>
-</div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Register</title>
+        <!-- Skrypty dla modalu -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <script type="text/javascript" src="../static/js/bootstrap/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/js/bootstrap/bootstrap.min.js"></script>
+        <!-- Koniec skryptów dla modalu -->
+        <link href="../static/css/log.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="log">
+            <div class="title_div">
+                <h1 class="title">Register</h1>
+            </div>
+            <div>
+                {{message}}
+            </div>
+            <form class="flex" action="/register" method="post">
+                <p>
+                    Username:
+                    <input type="text" class="data" name="name" required>
+                </p>
+                <p>
+                    Email:
+                    <input type="text" class="data" name="email" required>
+                </p>
+                <p>
+                    Password:
+                    <input type="password" class="data" name="password" required>
+                </p>
+                <button type="submit" class="data btn btn-outline-success">Register</button>
+            </form>
+            <div class="log_second_option">
+                <h5>If you are registered, use button below.</h5>
+                <button class="btn btn-outline-success" onclick="location.href='/login'">Login</button>
+            </div>
+            <div class="go_to_main_page">
+                <h5>If you want to see public boards, use button below.</h5>
+                <button class="btn btn-outline-success" onclick="location.href='/'">Boards</button>
+            </div>
+        </div>
+    </body>
 </html>

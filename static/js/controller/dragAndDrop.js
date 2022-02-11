@@ -44,12 +44,6 @@ function dragLeave(e) {
 function dragEnter(e) {
     let currentElement = e.currentTarget
     currentElement.classList.add('empty--active')
-    // let cardId = e.currentTarget
-    // // cardId.insertAdjacentElement("afterbegin", div.card1)
-    // let addDiv = document.createElement('div')
-    // addDiv.className = 'empty'
-    // currentElement.insertAdjacentElement('afterend', addDiv)
-    // console.log('enter')
 }
 
 function dragOver(e) {
@@ -60,15 +54,8 @@ function dragOver(e) {
 async function dragDrop(e) {
     let cardId = e.currentTarget
     cardId.classList.remove('empty--active')
-    console.log(cardId)
     let columnId = cardId.parentElement.getAttribute('data-column-id')
-    console.log(columnId, cardId.parentElement)
     cardId.insertAdjacentElement("afterbegin", div.card1)
-    // cardId.insertAdjacentElement("afterend", div.card1)
-    // let addDiv = document.createElement('div')
-    // addDiv.className = 'empty'
-    // cardId.insertAdjacentElement('afterend', addDiv)
-    console.log(cardId1, columnId)
     await dataHandler.changeColumn(cardId1, columnId)
     await orderLIst()
 }
@@ -79,7 +66,6 @@ async function orderLIst() {
     let cardsList = []
     for (a; a < divs.length; a++) {
         cardsList.push(divs[a].getAttribute('data-card-id'))
-        console.log(cardsList)
     }
     await dataHandler.cardOrderList(cardsList)
 }

@@ -120,9 +120,3 @@ async function apiPut(url, data) {
         console.log("PUT sent successfully")
     }
 }
-
-
-
-// async function apiDelete(url) {}
-
-// async function apiPut(url) {}

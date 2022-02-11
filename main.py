@@ -6,8 +6,6 @@ import mimetypes
 from query import users_queries, board_queries, card_queries, columns_queries
 
 
-
-
 mimetypes.add_type('application/javascript', '.js')
 app = Flask(__name__)
 load_dotenv()
@@ -57,12 +55,6 @@ def get_cards_for_board(board_id: int):
     return card_queries.get_cards_for_board(board_id)
 
 
-def main():
-    app.run(debug=True)
-    with app.app_context():
-        app.add_url_rule('/favicon.ico', redirect_to=url_for('static', filename='favicon/favicon.ico'))
-
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -81,7 +73,7 @@ def login():
 
 @app.route('/logout')
 def logout():
-    if session['login'] == True:
+    if session['login']:
         session.pop('login')
         session.pop('user')
         session.pop('user_id')
@@ -97,7 +89,6 @@ def register():
         email = request.form['email']
         if users_queries.get_one_user(name):
             return render_template('register.html', message="Username already exists, please choose another one!")
-
         user_data = {'name': name,
                      'email': email,
                      'password': generate_password_hash(request.form['password'])}
@@ -176,7 +167,6 @@ def order_cards_list():
         ordered_list = {}
         i = 0
         card_list = request.json['cardList']
-        # print(card_list)
         for card in card_list:
             i += 1
             dicts = {int(card): i}
@@ -185,7 +175,6 @@ def order_cards_list():
         for k, v in ordered_list.items():
             card_queries.change_order(k, v)
         return card_list
-
 
 
 @app.route("/api/columns_name/<int:board_id>")
@@ -232,6 +221,12 @@ def rename_column_name(column_id: int):
 def rename_board_name(board_id: int):
     title = request.get_json()['title']
     return board_queries.rename_column(board_id, title)
+
+
+def main():
+    app.run(debug=True)
+    with app.app_context():
+        app.add_url_rule('/favicon.ico', redirect_to=url_for('static', filename='favicon/favicon.ico'))
 
 
 if __name__ == '__main__':

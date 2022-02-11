@@ -3,10 +3,22 @@ import { htmlFactory, htmlTemplates, loadAddNewCardButton, loadArchivedCardsButt
 import { domManager } from "../view/domManager.js";
 import { cardsManager, create_card} from "./cardsManager.js";
 
+
 export let columnsManager = {
     loadColumns: async function (boardId) {
     creatAddNewColumnBtn(boardId)
     const columns = await dataHandler.getColumnsByBoardId(boardId)
+    injectColumnsHtmlIntoBoard(columns, boardId)
+    await cardsManager.loadCards(boardId, columns)
+    domManager.addChild(`.board[data-board-id="${boardId}"]`, loadAddNewCardButton(boardId));
+    document.getElementById('add_card_button_for_board' + boardId).addEventListener('click', () => createNewCard(boardId));
+    domManager.addChild(`.board[data-board-id="${boardId}"]`, loadArchivedCardsButton(boardId));
+    document.getElementById('archived_cards_button_for_board' + boardId).addEventListener('click', () => archivedCards(boardId));
+  },
+};
+
+
+const injectColumnsHtmlIntoBoard = function (columns, boardId){
     for (let column of columns) {
       const columnBuilder = htmlFactory(htmlTemplates.column);
       const content = columnBuilder(column);
@@ -17,14 +29,9 @@ export let columnsManager = {
         deleteButtonHandler)
         domManager.addEventListener(`.content-button[data-column-id="${column.id}"]`,
           'click', renameColumn);
-    }await cardsManager.loadCards(boardId, columns)
-      domManager.addChild(`.board[data-board-id="${boardId}"]`, loadAddNewCardButton(boardId));
-      document.getElementById('add_card_button_for_board' + boardId).addEventListener('click', () => createNewCard(boardId));
-      domManager.addChild(`.board[data-board-id="${boardId}"]`, loadArchivedCardsButton(boardId));
-      document.getElementById('archived_cards_button_for_board' + boardId).addEventListener('click', () => archivedCards(boardId));
+    }
+}
 
-  },
-};
 
 const creatAddNewColumnBtn = function(boardId){
   const buttonBuilder = htmlFactory(htmlTemplates.button);
@@ -71,7 +78,6 @@ async function createNewCard(boardId){
             body: JSON.stringify({title: new_title, column_name: new_column_name}) // ZAMIENIA SŁOWIK NA JSONA
         }); // robi posta na podanego urla
         let card = await response.json();
-        console.log(card);
         create_card(card);
     }
 }
@@ -92,13 +98,11 @@ async function archivedCards(boardId){
         place_for_archived_cards += `<p><input type="checkbox" name="archived_input" value="${card['id']}">` + ' ' + card['title'] + '</p>';
     }
     document.getElementById("all_archived_cards").innerHTML = place_for_archived_cards;
-    console.log(cards);
     $('#archived').modal();
 }
 async function renameColumn(clickEvent) {
     let columnId = clickEvent.target.dataset.columnId;
     let content = document.querySelector(`.board-column[data-column-id="${columnId}"]`);
-    console.log(content);
     content.contentEditable = !content.isContentEditable;
       if (content.contentEditable === 'false') {
           clickEvent.target.innerHTML = 'Edit';

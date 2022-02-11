@@ -5,12 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>ProMan</title>
-
-         <!-- Skrypty dla modalu -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <script type="text/javascript" src="../static/js/bootstrap/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/js/bootstrap/bootstrap.min.js"></script>
-    <!-- Koniec skryptów dla modalu -->
+        <!-- Skrypty dla modalu -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <script type="text/javascript" src="../static/js/bootstrap/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/js/bootstrap/bootstrap.min.js"></script>
+        <!-- Koniec skryptów dla modalu -->
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
         <link rel="icon" type="image/png" sizes="32x32"
               href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}">
@@ -18,8 +17,7 @@
               href="{{ url_for('static', filename='favicon/favicon-96x96.png') }}">
         <link rel="icon" type="image/png" sizes="16x16"
               href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
-{#        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">#}
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/design.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/design.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/modal.css') }}">
         <script type="module" src="{{ url_for('static', filename='js/main.js') }}" defer></script>
         <script type="module" src="{{ url_for('static', filename='js/controller/dragAndDrop.js') }}" defer></script>
@@ -29,45 +27,45 @@
     <body>
         <div class="main_page" id="root">
             <div class="log_on_main_page">
-            {% if session['login']%}
-            <button class="corner logout-btn" onclick="location.href='/logout'">Logout</button>
-            {% else %}
-            <button onclick="location.href='/login'">Login</button>
-            <button onclick="location.href='/register'">Register</button>
-            {% endif %}
-        </div>
-            {% if session %}
-            <div class="private-boards" id="private-boards">
-                <div class="board-type-header"> Your Private Boards </div>
+                {% if session['login'] %}
+                    <button class="corner logout-btn" onclick="location.href='/logout'">Logout</button>
+                {% else %}
+                    <button onclick="location.href='/login'">Login</button>
+                    <button onclick="location.href='/register'">Register</button>
+                {% endif %}
             </div>
+            {% if session %}
+                <div class="private-boards" id="private-boards">
+                    <div class="board-type-header"> Your Private Boards</div>
+                </div>
             {% endif %}
             <div class="public-boards" id="public-boards">
                 <div class="board-type-header">Public boards</div>
             </div>
         </div>
-    {% if session %}
-        <div class="new-board-btn-container">
-            <button class="new-board-button">➕ Add new board ➕</button>
-        </div>
+        {% if session %}
+            <div class="new-board-btn-container">
+                <button class="new-board-button">➕ Add new board ➕</button>
+            </div>
 
-        <script>
-            sessionStorage.setItem('user_id', {{ user_id }});
-        </script>
-    {% endif %}
-    <!-- Początek modalu -->
-<div id="archived" class="modal fade">
-    <div class="modal-header archived-title">
-        <h1 id="archived_header">Archived cards</h1>
-        <button type="button" class="close" data-dismiss="modal">X</button>
-    </div>
-    <div class="modal-body">
-       <div id="all_archived_cards"></div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="restoreCards()">Add cards</button>
-    </div>
-</div>
-<!-- Koniec modalu -->
+            <script>
+                sessionStorage.setItem('user_id', {{ user_id }});
+            </script>
+        {% endif %}
+        <!-- Początek modalu -->
+        <div id="archived" class="modal fade">
+            <div class="modal-header archived-title">
+                <h1 id="archived_header">Archived cards</h1>
+                <button type="button" class="close" data-dismiss="modal">X</button>
+            </div>
+            <div class="modal-body">
+                <div id="all_archived_cards"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="restoreCards()">Add cards</button>
+            </div>
+        </div>
+        <!-- Koniec modalu -->
     </body>
 </html>
 
