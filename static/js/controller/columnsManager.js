@@ -100,6 +100,8 @@ async function archivedCards(boardId){
     document.getElementById("all_archived_cards").innerHTML = place_for_archived_cards;
     $('#archived').modal();
 }
+
+
 async function renameColumn(clickEvent) {
     let columnId = clickEvent.target.dataset.columnId;
     let content = document.querySelector(`.board-column[data-column-id="${columnId}"]`);

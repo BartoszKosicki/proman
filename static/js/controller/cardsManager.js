@@ -55,11 +55,11 @@ async function editCardTitle(card) {
             body: JSON.stringify({title: new_title}) // ZAMIENIA SŁOWIK NA JSONA
         }); // robi puta na podanego urla
         let edited_card = document.querySelector(`.card[data-card-id="${card.id}"]`);
-        edited_card.innerHTML = edited_card.innerHTML.replace(old_title, new_title);
-        document.getElementById('edit_title_for_card' + card.id).addEventListener('click', () => editCardTitle(card));
-        document.getElementById('delete_card' + card.id).addEventListener('click', () => deleteCard(card));
-        document.getElementById('archive_card' + card.id).addEventListener('click', () => archiveCard(card));
-        card.title = new_title;
+    edited_card.innerHTML = edited_card.innerHTML.replace(old_title, new_title);
+    document.getElementById('edit_title_for_card' + card.id).addEventListener('click', () => editCardTitle(card));
+    document.getElementById('delete_card' + card.id).addEventListener('click', () => deleteCard(card));
+    document.getElementById('archive_card' + card.id).addEventListener('click', () => archiveCard(card));
+    card.title = new_title;
     }
 }
 

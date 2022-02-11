@@ -41,11 +41,9 @@ const getBoards = async function () {
 }
 
 function showHideButtonHandler(clickEvent) {
-    // clickEvent.target.classList.add('hide_button')
     const boardId = clickEvent.target.dataset.boardId;
     columnsManager.loadColumns(boardId);
     document.getElementById(`board${boardId}`).classList.add('display');
-    // document.querySelector('.overlay').classList.remove('hidden')
     addRefreshBtn(boardId)
     clickEvent.currentTarget.removeEventListener('click', showHideButtonHandler);
     clickEvent.currentTarget.addEventListener('click', hideBoard);

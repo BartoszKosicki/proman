@@ -17,10 +17,6 @@ export let dataHandler = {
     return response;
   },
 
-  getCard: async function (cardId) {
-    // the card is retrieved and then the callback function is called with the card
-  },
-
   createNewColumn: async function (columnTitle, boardId) {
     let payload = {'title': columnTitle};
     const response = await apiPost(`/api/columns/${boardId}/add`, payload);
@@ -39,10 +35,6 @@ export let dataHandler = {
   deleteColumn: async function (columnId) {
     const response = await apiDelete(`/api/columns/${columnId}/delete`);
     return response;
-  },
-
-  createNewCard: async function (cardTitle, boardId, statusId) {
-      // creates new card, saves it and calls the callback function with its data
   },
 
   createNewBoard: async function (data) {
