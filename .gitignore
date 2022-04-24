@@ -1,0 +1,7 @@
+/.idea/
+.vscode
+/__pycache__/
+/venv/
+/proman/
+.env.template
+query/__pycache__

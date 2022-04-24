@@ -1,0 +1,18 @@
+#archived{
+    width: 90%;
+    height: fit-content;
+    background: white;
+    position: center;
+    left: 5%;
+    right: 5%;
+    top: 5%;
+}
+
+input{
+    display: inline-block;
+}
+
+.archived-title{
+    text-align: center;
+    background: white;
+}
